@@ -11,6 +11,8 @@
         android:theme="@style/Theme.CarrotNeue">
         <activity
             android:name=".MainActivity"
+            android:resizeableActivity="true"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.CarrotNeue.NoActionBar">
