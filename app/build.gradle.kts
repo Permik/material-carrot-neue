@@ -14,7 +14,10 @@ android {
 
     defaultConfig {
         applicationId = "xyz.permik.carrotneue"
-        minSdk = 23
+        //TODO: Workaround until Android Studio and AGP have been fixed
+        //INFO: https://stackoverflow.com/a/68566669/5274337
+        //ORIG: 23
+        minSdk = 24
         targetSdk = 31
         versionCode = 1
         versionName = "1.0"
