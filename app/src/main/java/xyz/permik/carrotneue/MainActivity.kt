@@ -22,6 +22,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import cafe.adriel.lyricist.LocalStrings
 import cafe.adriel.lyricist.Lyricist
@@ -46,26 +47,38 @@ class MainActivity : ComponentActivity() {
             ProvideStrings(lyricist) {
                 CarrotNeueTheme {
                     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Open))
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                    ) {
+                        Box(modifier = Modifier.align(Alignment.TopEnd)) {
+                            ActionMenu(
+                                expanded = expandedAppBar,
+                                onDismissRequest = { expandedAppBar = false },
+                            ) {
+                                DropdownMenuItem(onClick = { /* Handle refresh! */ }) {
+                                    Text("Refresh")
+                                }
+                                DropdownMenuItem(onClick = { /* Handle settings! */ }) {
+                                    Text("Settings")
+                                }
+                            }
+                        }
+
+                    }
                     Scaffold(
                         scaffoldState = scaffoldState,
                         topBar = {
                             TopAppBar(
                                 title = { Text(text = LocalStrings.current.appName)},
                                 actions = {
-                                    DropdownMenu(expanded = expandedAppBar, onDismissRequest = { expandedAppBar = false }) {
-                                        DropdownMenuItem(onClick = { /* Handle refresh! */ }) {
-                                            Text("Refresh")
-                                        }
-                                        DropdownMenuItem(onClick = { /* Handle settings! */ }) {
-                                            Text("Settings")
-                                        }
-                                    }
+
                                     IconButton(onClick = { expandedAppBar = true },) {
                                         Icon(imageVector = Icons.Filled.MoreVert, contentDescription = LocalStrings.current.moreVert)
                                     }
                                 }
                             )
-                                 },
+                        },
                     ) {
 
                         val state = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
@@ -114,7 +127,6 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     }
-
                 }
             }
 
@@ -223,3 +235,4 @@ fun ProfileSelector(
     }
 
 }
+
