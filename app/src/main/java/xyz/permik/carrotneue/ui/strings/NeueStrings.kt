@@ -1,6 +1,6 @@
 package xyz.permik.carrotneue.ui.strings
 
-data class Strings(
+data class NeueStrings(
     val helloWorld: String,
     val appName: String,
     val addAccount: String,
