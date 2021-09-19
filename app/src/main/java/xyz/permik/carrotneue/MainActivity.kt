@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var lyricist: Lyricist<NeueStrings>
 
 
-    @OptIn(ExperimentalMaterialApi::class)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -68,6 +68,9 @@ fun CarrotNeueApp(
     // TODO: Make the progress bar animate according to remaining valid time (60 s)
     var timeoutB by remember{
         mutableStateOf(true)
+    }
+    var codeTimeout by remember {
+        mutableStateOf(0)
     }
     val codeTimeoutProgress: Float by animateFloatAsState(
         targetValue = if (timeoutB) 1f else 0.0f,
